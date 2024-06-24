@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:providerstudentrecorderhive/provider/home_controller.dart';
+import 'package:providerstudentrecorderhive/view/view_student.dart';
 
 class SearchStudent extends StatelessWidget {
   const SearchStudent({super.key});
@@ -37,6 +38,12 @@ class SearchStudent extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return Card(
                               child: ListTile(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (ctx) => ViewStudent(
+                                            studentId: studentController
+                                                .results[index].key))),
                                 title:
                                     Text(studentController.results[index].name),
                               ),
